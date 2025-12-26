@@ -28,7 +28,10 @@ class Database {
             $sqlScript = file_get_contents($sqlFile);
             
             if ($sqlScript) {
+                // РАЗБИВАЕМ SQL на отдельные команды
                 $commands = $this->splitSQLCommands($sqlScript);
+                
+                // Выполняем каждую команду отдельно
                 foreach ($commands as $command) {
                     if (!empty(trim($command))) {
                         try {
